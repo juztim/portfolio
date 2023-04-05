@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { Container, createTheme, NextUIProvider, Row } from "@nextui-org/react";
+
+const theme = createTheme({
+  type: "dark", // it could be "light" or "dark"
+  theme: {
+    colors: {
+      // brand colors
+      primaryLight: "$purple200",
+      primaryLightHover: "$purple300",
+      primaryLightActive: "$purple400",
+      primaryLightContrast: "$purple600",
+      primary: "$purple500",
+      primaryBorder: "$purple500",
+      primaryBorderHover: "$purple600",
+      primarySolidHover: "$purple700",
+      primarySolidContrast: "$white",
+      primaryShadow: "$purple500",
+
+      gradient:
+        "linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)",
+      link: "#5E1DAD",
+
+      // you can also create your own color
+      myColor: "#ff4ecd",
+
+      // ...  more colors
+    },
+    space: {},
+    fonts: {},
+  },
+});
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <NextUIProvider theme={theme}>
+      <Container>
+        <Container>
+          <Row justify="space-between" align="center" css={{ width: "100%" }}>
+            <h1>JuzTim</h1>
+            <div style={{ display: "flex", gap: "24px" }}>
+              <a href="#">About</a>
+              <a href="#">Work</a>
+              <a href="#">Career</a>
+              <a href="#">Contact</a>
+            </div>
+          </Row>
+        </Container>
+      </Container>
+    </NextUIProvider>
+  );
 }
 
-export default App
+export default App;
